@@ -1,7 +1,7 @@
 /*
 APP:必看小说
 变量 如
-bkxshd2='sessionid=6e52cab4cefa43c193f3a466b0c33111'
+bkxshd19='sessionid=6e52cab4cefa43c193f3a466b0c33111'
 抓包点我的 关键字 info
 查看请求头COOKIE里的 只需要sessionid=XXXXXX这一段
 多账号用艾特隔开@
@@ -9,19 +9,19 @@ bkxshd2='sessionid=6e52cab4cefa43c193f3a466b0c33111'
 withdraws='' 1为1元 2为5元 3为10元 4为30元 5为50元 6为100元
 每天额度是每天刷新的10点吧 
 建议一天别跑多了 怕黑 
-cron: 40 59 9 * * *
+cron: 50 59 9 * * *
 */
 
-const $ = new Env('必看小说提现');
+const $ = new Env('必看小说提现19');
 var crypto = require("crypto");
 let status;
 status = (status = ($.getval("bkxsstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-let bkxshd2Arr = [],bkxscount = ''
+let bkxshd19Arr = [],bkxscount = ''
 const notify = $.isNode() ? require('./sendNotify') : '';
-let bkxshd2= $.isNode() ? (process.env.bkxshd2 ? process.env.bkxshd2 : "") : ($.getdata('bkxshd2') ? $.getdata('bkxshd2') : "")
+let bkxshd19= $.isNode() ? (process.env.bkxshd19 ? process.env.bkxshd19 : "") : ($.getdata('bkxshd19') ? $.getdata('bkxshd19') : "")
 let withdraws=$.isNode() ? (process.env.withdraws ? process.env.withdraws : "") : ($.getdata('withdraws') ? $.getdata('withdraws') : "")
 let allMessage = '';
-let bkxshd2s = ""
+let bkxshd19s = ""
 const logs =0;
 const host='https://api.ibreader.com/'
 var hours = new Date().getHours();
@@ -31,36 +31,36 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
 !(async () => {
 
       if(!$.isNode()){
-          bkxshd2Arr.push($.getdata('bkxshd2'))
+          bkxshd19Arr.push($.getdata('bkxshd19'))
           let bkxscount = ($.getval('bkxscount') || '1');
           for (let i = 2; i <= bkxscount; i++) {
-            bkxshd2Arr.push($.getdata(`bkxshd2${i}`))
+            bkxshd19Arr.push($.getdata(`bkxshd19${i}`))
             }
-    console.log(`------------- 共${bkxshd2Arr.length}个账号-------------\n`)
-      for (let i = 0; i < bkxshd2Arr.length; i++) {
-        if (bkxshd2Arr[i]) {
-          bkxshd2 = bkxshd2Arr[i];
+    console.log(`------------- 共${bkxshd19Arr.length}个账号-------------\n`)
+      for (let i = 0; i < bkxshd19Arr.length; i++) {
+        if (bkxshd19Arr[i]) {
+          bkxshd19 = bkxshd19Arr[i];
           $.index = i + 1;
 
   }
 }
       }else  {
-          if (process.env.bkxshd2 && process.env.bkxshd2.indexOf('\n') > -1) {
-            bkxshd2Arr = process.env.bkxshd2.split('\n');
+          if (process.env.bkxshd19 && process.env.bkxshd19.indexOf('\n') > -1) {
+            bkxshd19Arr = process.env.bkxshd19.split('\n');
             console.log(`您选择的是用"换行"隔开\n`)
         } else {
-            bkxshd2s = [process.env.bkxshd2]
+            bkxshd19s = [process.env.bkxshd19]
         };
-        Object.keys(bkxshd2s).forEach((item) => {
-        if (bkxshd2s[item]) {
-            bkxshd2Arr.push(bkxshd2s[item])
+        Object.keys(bkxshd19s).forEach((item) => {
+        if (bkxshd19s[item]) {
+            bkxshd19Arr.push(bkxshd19s[item])
         }
     })
-          console.log(`共${bkxshd2Arr.length}个cookie`)
+          console.log(`共${bkxshd19Arr.length}个cookie`)
  for (let n = 0; n < 70;n++) {
-	        for (let k = 0; k < bkxshd2Arr.length; k++) {
+	        for (let k = 0; k < bkxshd19Arr.length; k++) {
                 $.message = ""
-                bkxshd2 = bkxshd2Arr[k]
+                bkxshd19 = bkxshd19Arr[k]
                 $.index = k + 1;
  
           console.log(`\n开始【必看小说${$.index}】`)
@@ -315,7 +315,7 @@ function bkxs(a,body) {
 'Content-Type': 'application/x-www-form-urlencoded; Charset=UTF-8',
 'Accept': '*/*',
 'Accept-Language': 'zh-cn',
-'Cookie': bkxshd2,
+'Cookie': bkxshd19,
 'Host': 'api.ibreader.com',
 'Referer': 'https://api.ibreader.com/task_api/task/getChapterTaskList',
 'User-Agent': 'Mozilla/5.0 (Linux; Android 7.1.2; PCAM00 Build/NGI77B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36',
