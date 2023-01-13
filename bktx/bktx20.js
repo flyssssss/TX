@@ -1,4 +1,4 @@
-﻿/*
+/*
 APP:必看小说
 变量 如
 bkxshd20='sessionid=6e52cab4cefa43c193f3a466b0c33111'
