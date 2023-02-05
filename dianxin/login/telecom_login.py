@@ -64,7 +64,7 @@ class TelecomLogin:
         data = post(url, headers=headers, json=body).json()
         code = data["responseData"]["resultCode"]
         if code != "0000":
-            print_now("登陆失败, 接口日志" + str(data))
+            print_now("账号【"+self.account+"】，登陆失败，可能密码错误, 接口日志" + str(data))
             return None
         self.token = data["responseData"]["data"]["loginSuccessResult"]["token"]
         self.userId = data["responseData"]["data"]["loginSuccessResult"]["userId"]
