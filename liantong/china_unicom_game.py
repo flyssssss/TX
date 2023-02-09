@@ -283,5 +283,4 @@ if __name__ == '__main__':
         print("\n")
     for i in l:
         i.join()
-    send("联通畅游",msg_str)
-    
+    send("联通畅游",msg_str)    
